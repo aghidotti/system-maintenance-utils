@@ -9,6 +9,13 @@ function broadcast.error {
         echo $1 >&2
 }
 
+function check_superuser {
+	if [ $EUID -ne 0 ]; then
+		broadcast.error "Error: $0 must be executed as root"
+		exit 1
+	fi
+}
+
 function check_retval {
         if [ $1 -ne 0 ]; then
                 broadcast.error "Command exited with status $1: exiting"
@@ -19,12 +26,9 @@ function check_retval {
 TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
 ROOTDEV="/dev/system/root"
 SUBVOL="@"
+###############################################################################
 
-if [ $EUID -ne 0 ]
-then
-	broadcast.error "Error: $0 must be executed as root"
-	exit 1
-fi
+check_superuser
 
 if [ $# -gt 0 ] && [ -n "$1" ]
 then
