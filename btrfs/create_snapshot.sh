@@ -31,6 +31,12 @@ function check_retval {
 
 check_superuser
 
+
+if [ -z "$(command -v btrfs)" ]; then 
+	broadcast.error "Error: btrfs command missing: install btrfs-tools"
+	exit 1
+fi
+
 if [ $# -gt 0 ] && [ -n "$1" ]; then
 	SUBVOL="$1"
 fi
