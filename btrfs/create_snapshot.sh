@@ -20,6 +20,12 @@ TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
 ROOTDEV="/dev/system/root"
 SUBVOL="@"
 
+if [ $EUID -ne 0 ]
+then
+	broadcast.error "Error: $0 must be executed as root"
+	exit 1
+fi
+
 if [ $# -gt 0 ] && [ -n "$1" ]
 then
 	SUBVOL="$1"
