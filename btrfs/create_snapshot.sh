@@ -1,12 +1,16 @@
 #!/bin/bash
 
+TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
+ROOTDEV="/dev/system/root"
+SUBVOL="@"
+
 
 function broadcast.info {
-        echo $1 >&1
+	echo $1 >&1
 }
 
 function broadcast.error {
-        echo $1 >&2
+	echo $1 >&2
 }
 
 function check_superuser {
@@ -17,21 +21,17 @@ function check_superuser {
 }
 
 function check_retval {
-        if [ $1 -ne 0 ]; then
-                broadcast.error "Command exited with status $1: exiting"
-                exit $1
-        fi
+	if [ $1 -ne 0 ]; then
+		broadcast.error "Command exited with status $1: exiting"
+		exit $1
+	fi
 }
 
-TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
-ROOTDEV="/dev/system/root"
-SUBVOL="@"
 ###############################################################################
 
 check_superuser
 
-if [ $# -gt 0 ] && [ -n "$1" ]
-then
+if [ $# -gt 0 ] && [ -n "$1" ]; then
 	SUBVOL="$1"
 fi
 
