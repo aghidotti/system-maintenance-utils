@@ -5,16 +5,17 @@ TOPVOLDEV=""
 SUBVOL=""
 TAG=""
 
+
 broadcast_debug() {
-	echo "DEBUG => $1" >&1
+	echo "${TAG:+$TAG: }DEBUG => $1" >&1
 }
 
 broadcast_info() {
-	echo $1 >&1
+	echo "${TAG:+$TAG: }$1" >&1
 }
 
 broadcast_error() {
-	echo $1 >&2
+	echo "${TAG:+$TAG: }$1" >&2
 }
 
 check_superuser() {
