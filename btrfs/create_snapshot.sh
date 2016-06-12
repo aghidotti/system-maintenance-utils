@@ -20,7 +20,7 @@ broadcast_error() {
 
 check_superuser() {
 	if [ $EUID -ne 0 ]; then
-		broadcast_error "Error: $0 must be executed as root"
+		broadcast_error "Error: $(basename $0) must be executed as root"
 		exit 1
 	fi
 }
