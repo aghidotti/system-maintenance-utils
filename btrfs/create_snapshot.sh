@@ -72,7 +72,7 @@ while getopts "bdv:s:t:h" OPT; do
 	case $OPT in
 		b	) BATCH_MODE=true;;
 		d	) echo "Running in \"debug mode\""; DEBUG_MODE=true;;
-		r	) v_flag=true; TOPVOLDEV="$OPTARG";;
+		v	) v_flag=true; TOPVOLDEV="$OPTARG";;
 		s	) s_flag=true; SUBVOL="$OPTARG";;
 		t	) TAG="$OPTARG";;
 		h	) print_usage;;
