@@ -94,12 +94,7 @@ if [ "$s_flag" == "false" ]; then
 	exit 1
 fi
 
-#if [ -z $TAG ]; then
-#	TAG="SNAP-$SUBVOL"
-#fi
-
 if [ "$DEBUG_MODE" == "true" ]; then
-	broadcast_debug "ok = $ok"
 	broadcast_debug "v_flag = $v_flag"
 	broadcast_debug "s_flag = $s_flag"
 	broadcast_debug "DEBUG_MODE = $DEBUG_MODE"
