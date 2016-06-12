@@ -4,6 +4,9 @@ TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
 ROOTDEV="/dev/system/root"
 SUBVOL="@"
 
+broadcast_debug() { 
+  echo "DEBUG => $1" >&1 
+} 
 
 broadcast_info() {
 	echo $1 >&1
